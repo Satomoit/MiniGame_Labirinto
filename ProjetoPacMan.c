@@ -1,7 +1,4 @@
-//Equipe:
-//Aline.
-//Ellen.
-//Josiane.
+
 
 #include <graphics.h>
 #include <stdlib.h>
@@ -12,14 +9,14 @@
         int x, y;
     } Posicao;
 
-//declarando as funções ; no final, depois quando chamar a função abre e fecha {}
+//declarando as funÃ§Ãµes ; no final, depois quando chamar a funÃ§Ã£o abre e fecha {}
     void exibirTelaInicial();
     void exibirTelaFinal();
     void exibirTelaBomba();
     void exibirTelaInimigo();
     void exibirGameOver();
     void desenharLabirinto(char labirinto[24][32], Posicao jogador, Posicao inimigo, int tamanho_celula, int moedas);
-    void moverInimigo(Posicao *inimigo, Posicao jogador, char labirinto[24][32]);//talvez mudar o inimigo pra um possível player 2?
+    void moverInimigo(Posicao *inimigo, Posicao jogador, char labirinto[24][32]);//talvez mudar o inimigo pra um possÃ­vel player 2?
     void moverBombas(char labirinto[24][32]);
     void gerarBombas(char labirinto[24][32]);
     void gerarMoedas(char labirinto[24][32]);
@@ -66,9 +63,9 @@ int main() {
     int tempo_na_safe = 0; //define o valor inicial da safe zone como 0
 
 
-    exibirTelaInicial(); //chama a função de mostrar a tela inicial
-    gerarBombas(labirinto); //chama a função e gera as bombas
-    gerarMoedas(labirinto); //chama a função e gera as moedas
+    exibirTelaInicial(); //chama a funÃ§Ã£o de mostrar a tela inicial
+    gerarBombas(labirinto); //chama a funÃ§Ã£o e gera as bombas
+    gerarMoedas(labirinto); //chama a funÃ§Ã£o e gera as moedas
 
 
     //-----------------------------------------------------------------
@@ -83,12 +80,12 @@ int main() {
         if (entrada == 'a') nova_posicao.y--; //esquerda
         if (entrada == 'd') nova_posicao.y++; //direita
 
-        if (labirinto[nova_posicao.x][nova_posicao.y] != '#') jogador = nova_posicao; //verifica aí se o jogador vai pro ' ', se for atualiza a posição
+        if (labirinto[nova_posicao.x][nova_posicao.y] != '#') jogador = nova_posicao; //verifica aÃ­ se o jogador vai pro ' ', se for atualiza a posiÃ§Ã£o
 
         if (labirinto[jogador.x][jogador.y] == 'M') {  //se o player coletar uma moeda
             moedas++; //adiciona as moedas ao contador
-            labirinto[jogador.x][jogador.y] = ' ';  //remove a moeda após coletada
-            regerarMoedas(labirinto);//chama a função e da spawn numa nova moeda
+            labirinto[jogador.x][jogador.y] = ' ';  //remove a moeda apÃ³s coletada
+            regerarMoedas(labirinto);//chama a funÃ§Ã£o e da spawn numa nova moeda
         }
 
         if (labirinto[jogador.x][jogador.y] == 'B') { //se o player for explodido tire moedas
@@ -96,26 +93,26 @@ int main() {
             labirinto[jogador.x][jogador.y] = ' '; //tira a moeda e "declara" o local como vazio, ou seja troca o 'B' por ' '
             regerarBombas(labirinto);//da spwan numa nova bomba
 
-            if (moedas < 0) { //se o player for explodido e ele não tiver moedas mostre game over
+            if (moedas < 0) { //se o player for explodido e ele nÃ£o tiver moedas mostre game over
                 cleardevice(); //limpa a tela
-                exibirTelaBomba();//chama a função
+                exibirTelaBomba();//chama a funÃ§Ã£o
                 getch();
-                break;//interromper a execução
+                break;//interromper a execuÃ§Ã£o
             }
         }
 
-        int dx = jogador.x - inimigo.x; //dx é pra verificar a diferença x entre o jogador e o inimigo, tipo se o player ta na direita o dx é positivo
-        int dy = jogador.y - inimigo.y; //msm coisa só que se for positivo é pro player ta abaixo do npc
+        int dx = jogador.x - inimigo.x; //dx Ã© pra verificar a diferenÃ§a x entre o jogador e o inimigo, tipo se o player ta na direita o dx Ã© positivo
+        int dy = jogador.y - inimigo.y; //msm coisa sÃ³ que se for positivo Ã© pro player ta abaixo do npc
         Posicao novo_inimigo = inimigo;
-        if (abs(dx) > abs(dy)) novo_inimigo.x += (dx > 0 ? 1 : -1);//movimento do npc inimigo (futuramente fazer uma "cadeia" de if pra melhorar a movimentação)
+        if (abs(dx) > abs(dy)) novo_inimigo.x += (dx > 0 ? 1 : -1);//movimento do npc inimigo (futuramente fazer uma "cadeia" de if pra melhorar a movimentaÃ§Ã£o)
         else novo_inimigo.y += (dy > 0 ? 1 : -1); //movimento do npc inimigo
         if (labirinto[novo_inimigo.x][novo_inimigo.y] != '#' && labirinto[novo_inimigo.x][novo_inimigo.y] != 'S') inimigo = novo_inimigo;
 
         if (jogador.x == inimigo.x && jogador.y == inimigo.y) { //se o player for pego mostre a tela de game over
             cleardevice(); //limpa a tela
-            exibirTelaInimigo();//chama a função
+            exibirTelaInimigo();//chama a funÃ§Ã£o
             getch();
-            break;//interromper a execução
+            break;//interromper a execuÃ§Ã£o
         }
         if (labirinto[jogador.x][jogador.y] == 'S') { //era pra calcular o tempo na zona segura, mas mudamos pra calcular o movimento
             tempo_na_safe++; //tempo na safe, virou movimentos na zona segura
@@ -123,21 +120,21 @@ int main() {
                 moedas--;
                     if (moedas < 0) { //se as moedas ficarem negativas com o player se movimentando dentro da safe zone mostre a tela de game over
                         cleardevice(); //limpa a tela
-                        exibirGameOver();//chama a função
+                        exibirGameOver();//chama a funÃ§Ã£o
                         getch();
-                        break; //interromper a execução
+                        break; //interromper a execuÃ§Ã£o
                     }
                 }
             } else {
                 tempo_na_safe = 0; //zera o valor atual da safe zone quando o player sai da zona
             }
 
-//---------------------condição de vitoria---------------------
+//---------------------condiÃ§Ã£o de vitoria---------------------
         if (moedas >= 10 && labirinto[jogador.x][jogador.y] == 'S') { //se o jogador tiver 10 ou mais moedas e for na zona segura ele ganha
             cleardevice();
             readimagefile("gamewin.jpg", 0, 0, 800, 600);
             getch();
-            break;//interromper a execução
+            break;//interromper a execuÃ§Ã£o
         }
 
     } while (entrada != 27); //tecla esc e usando ESC fecha o jogo
@@ -148,7 +145,7 @@ int main() {
     } //fim do main
     //-----------------------------------------------------------------
 
-    //faça as funções depois do main
+    //faÃ§a as funÃ§Ãµes depois do main
     void exibirTelaInicial() {//tela inicial
     cleardevice();
     while (!kbhit()) { //cria um efeito de "piscar" o texto
@@ -210,7 +207,7 @@ int main() {
                 setfillstyle(SOLID_FILL, BLACK); //colore de preto
                 bar(x, y, x + tamanho_celula, y + tamanho_celula); //pega as cordenadas e desenha um "quadrado"
             }else if (labirinto[i][j] == 'S') {//safe zone
-                setfillstyle(SOLID_FILL, COLOR(0, 70, 0)); ////cor da zona safe é um ver escuro, mas darkgreen não "existe" dentro da graphics.h
+                setfillstyle(SOLID_FILL, COLOR(0, 70, 0)); ////cor da zona safe Ã© um ver escuro, mas darkgreen nÃ£o "existe" dentro da graphics.h
                 bar(x, y, x + tamanho_celula, y + tamanho_celula);
             } else if (labirinto[i][j] == 'B') {//bombas
                 setfillstyle(SOLID_FILL, BLUE);
@@ -231,20 +228,20 @@ int main() {
     setfillstyle(SOLID_FILL, GREEN); // desenha o quadrado do vermelho
     bar(jogador.y * tamanho_celula, jogador.x * tamanho_celula, (jogador.y + 1) * tamanho_celula, (jogador.x + 1) * tamanho_celula);
     //era pra desenhar o jogador, mas nao fuciona
-    //readimagefile("player.jpg",10,10,173,291); // a imagem é pequena demais pra funcionar
+    //readimagefile("player.jpg",10,10,173,291); // a imagem Ã© pequena demais pra funcionar
 
 
-    //inimigo (futuramente talvez fazer um player 2 e não inimigo?)
+    //inimigo (futuramente talvez fazer um player 2 e nÃ£o inimigo?)
     setfillstyle(SOLID_FILL, RED);
     bar(inimigo.y * tamanho_celula, inimigo.x * tamanho_celula, (inimigo.y + 1) * tamanho_celula, (inimigo.x + 1) * tamanho_celula);
     //readimagefile("player.png" jogador.y * tamanho_celula, jogador.x * tamanho_celula, (jogador.y + 1) * tamanho_celula, (jogador.x + 1) * tamanho_celula )// testes
 
-    //exibe o número de moedas
+    //exibe o nÃºmero de moedas
     char moedasTexto[20];
     sprintf(moedasTexto, "Moedas:%d", moedas);
     setcolor(WHITE); //cor
     settextstyle(DEFAULT_FONT, HORIZ_DIR, 2); //fonte
-    outtextxy(10, 9, moedasTexto); //local onde é pra aparecer o texto
+    outtextxy(10, 9, moedasTexto); //local onde Ã© pra aparecer o texto
 
 //-------------------- fazer a parte de texto para o objetivo do game----------
 
@@ -252,7 +249,7 @@ int main() {
     //outtextxy(490, 600, moedasTexto);
     //delay(100);
 
-      // for (int i = 0; i < 100; i++) { // se eu deixo esse for não vai dar pra se mover KKKKKKKKK
+      // for (int i = 0; i < 100; i++) { // se eu deixo esse for nÃ£o vai dar pra se mover KKKKKKKKK
         setcolor(WHITE);
         outtextxy(210, 9, "Colete 10 moedas e alcance a zona segura");
         delay(300);
@@ -264,8 +261,8 @@ int main() {
 
 
     void gerarBombas(char labirinto[24][32]){ //bombas
-    int numero_bombas = 5; //número de bombas geradas
-    srand(time(NULL));//gerador de números aleatórios
+    int numero_bombas = 5; //nÃºmero de bombas geradas
+    srand(time(NULL));//gerador de nÃºmeros aleatÃ³rios
 
     for (int i = 0; i < numero_bombas; i++) {
         int x, y;
@@ -280,8 +277,8 @@ int main() {
     }
 
     void regerarBombas(char labirinto[24][32]){ //bombas
-    int numero_bombas = 2; //número de bombas geradas
-    srand(time(NULL));//gerador de números aleatórios
+    int numero_bombas = 2; //nÃºmero de bombas geradas
+    srand(time(NULL));//gerador de nÃºmeros aleatÃ³rios
 
     for (int i = 0; i < numero_bombas; i++) {
         int x, y;
@@ -297,8 +294,8 @@ int main() {
 
 
     void gerarMoedas(char labirinto[24][32]) { //moedas
-    int numero_moedas = 5; //número de moedas que dá spwan
-    srand(time(NULL));//gerador de números aleatórios
+    int numero_moedas = 5; //nÃºmero de moedas que dÃ¡ spwan
+    srand(time(NULL));//gerador de nÃºmeros aleatÃ³rios
 
     for (int i = 0; i < numero_moedas; i++) {
         int x, y;
@@ -311,9 +308,9 @@ int main() {
         }
     }
 
-    void regerarMoedas(char labirinto[24][32]) { //cada vez que pegar uma moeda é pra dar spwan numa nova moeda
-    int numero_moedas = 1; //número de moedas que dá spwan
-    srand(time(NULL));//gerador de números aleatórios
+    void regerarMoedas(char labirinto[24][32]) { //cada vez que pegar uma moeda Ã© pra dar spwan numa nova moeda
+    int numero_moedas = 1; //nÃºmero de moedas que dÃ¡ spwan
+    srand(time(NULL));//gerador de nÃºmeros aleatÃ³rios
 
     for (int i = 0; i < numero_moedas; i++) {
         int x, y;
@@ -329,11 +326,11 @@ int main() {
 
 
 
-//coisas pra fazer futuramente(se não der tempo, fazer nas férias):
-//adicionar uma opção de player 1 e player 2
+//coisas pra fazer futuramente(se nÃ£o der tempo, fazer nas fÃ©rias):
+//adicionar uma opÃ§Ã£o de player 1 e player 2
 //arrumar o inimigo ou tirar o inimigo
-//tentar achar uma forma de deixar de "piscar" a tela toda vez que o labirinto é redesenhado, talvez fazer um labirinto no photoshop e jogar no fundo como imagem???
-//arrumar que ta dando interferência nas teclas, tipo quando qualquer tecla é precionada o labirinto conta como 1 movimento e ai o inimigo se move
-//arrumar q a tela de "obrigado por jogar" só deveria aparecer 1x e não toda vez que da game over, tipo quero que se de game over ainda de pra voltar e tentar de novo, até que o player preciona esc
+//tentar achar uma forma de deixar de "piscar" a tela toda vez que o labirinto Ã© redesenhado, talvez fazer um labirinto no photoshop e jogar no fundo como imagem???
+//arrumar que ta dando interferÃªncia nas teclas, tipo quando qualquer tecla Ã© precionada o labirinto conta como 1 movimento e ai o inimigo se move
+//arrumar q a tela de "obrigado por jogar" sÃ³ deveria aparecer 1x e nÃ£o toda vez que da game over, tipo quero que se de game over ainda de pra voltar e tentar de novo, atÃ© que o player preciona esc
 //fazer uma forma de quanto mais moeda se tem mais bombas aparecem
 //e procurar outras formar de deixar mais divertido
