@@ -1,6 +1,6 @@
 # MiniGame_Labirinto
 
-![Jogo estilo labirinto inspirado no PacMan](minigame labirinto.jpg)
+![Jogo estilo labirinto inspirado no PacMan](minigame_labirinto.png)
 
 Jogo desenvolvido em C usando a biblioteca graphics.h, criado como trabalho de faculdade em grupo. Inspirado inicialmente no PacMan, mas com características únicas da nossa equipe.
 
