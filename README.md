@@ -21,6 +21,9 @@ Siga as instruções no repositório oficial:
 2. Compile o arquivo principal (extensão .cpp)
 3. Execute o programa gerado
 
+## ⚠️ ATENÇÃO
+🔴 **O arquivo principal deve ser compilado como `.cpp`** (não como `.c`).
+
 ## 📝 Notas de Desenvolvimento
 - **Última atualização:** 14/12/24
 - **Planejado futuro:**
