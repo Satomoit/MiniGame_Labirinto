@@ -38,4 +38,4 @@ Projeto desenvolvido em grupo por:
 🄯 Creative Commons BY-NC 4.0:  
 - **✅ Pode:** Usar, modificar e compartilhar.  
 - **❌ Não pode:** Usar para fins comerciais.  
-- **📝 Condição:** Atribuição (crédito opcional, já que você não exige).  
+- **📝 Condição:** Atribuição (crédito opcional).  
